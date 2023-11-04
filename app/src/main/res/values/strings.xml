@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Speedometer</string>
+    <string name="button_speed">Start Speed Tracking</string>
+    <string name="button_logs">View Speeding Logs</string>
+    <string name="text_title">Welcome to the Speedometer!</string>
+    <string name="current_speed">Current Speed</string>
+</resources>
