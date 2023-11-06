@@ -18,28 +18,28 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageViewTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/background_top" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewTitle"
             android:layout_width="235dp"
             android:layout_height="68dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/text_title"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewTop"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewTop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,23 +58,42 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/startButton"
             android:layout_width="153dp"
             android:layout_height="71dp"
+            android:backgroundTint="@color/indigo_purple"
             android:fontFamily="@font/poppins"
             android:onClick="startTracking"
-            android:text="@string/button_speed"
+            android:text="@string/button_start"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.156"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.885" />
+            app:layout_constraintVertical_bias="0.794" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/stopButton"
             android:layout_width="153dp"
             android:layout_height="71dp"
+            android:backgroundTint="@color/peach"
+            android:fontFamily="@font/poppins"
+            android:onClick="stopTracking"
+            android:text="@string/button_stop"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.156"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.794" />
+
+        <Button
+            android:id="@+id/buttonLogs"
+            android:layout_width="153dp"
+            android:layout_height="71dp"
+            android:backgroundTint="@color/indigo_purple"
             android:fontFamily="@font/poppins"
             android:text="@string/button_logs"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -82,21 +101,21 @@
             app:layout_constraintHorizontal_bias="0.816"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.885" />
+            app:layout_constraintVertical_bias="0.794" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/imageViewRunning"
             android:layout_width="289dp"
             android:layout_height="294dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.157"
+            app:layout_constraintVertical_bias="0.064"
             app:srcCompat="@drawable/jogging_illustration" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewCurrentSpeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
@@ -104,10 +123,10 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.673" />
+            app:layout_constraintVertical_bias="0.618" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
