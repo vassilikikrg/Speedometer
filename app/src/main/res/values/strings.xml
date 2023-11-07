@@ -3,7 +3,10 @@
     <string name="button_start">Start Tracking</string>
     <string name="button_stop">Stop Tracking</string>
     <string name="button_logs">Speeding Logs</string>
+    <string name="button_change_limit">Change limit</string>
     <string name="text_title">Welcome to the Speedometer!</string>
     <string name="current_speed">Loading...</string>
     <string name="info_message">Please click on the start button to initiate speed tracking</string>
+    <string name="speed_limit">Speed limit:</string>
+    <string name="set_limit_button">Update limit</string>
 </resources>
