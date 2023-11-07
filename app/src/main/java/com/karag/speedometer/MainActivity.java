@@ -17,45 +17,39 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DecimalFormat;
-
 public class MainActivity extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
-    TextView currentSpeedText;
-    Button startButton;
-    Button stopButton;
+    TextView currentSpeedText,infoText,speedLimitText;
+    Button startButton,stopButton;
     ImageView imageRun;
-    TextView infoText;
     SharedPreferences preferences;
-    String limit;
-    TextView speedLimitText;
+    int limit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         currentSpeedText=findViewById(R.id.textViewCurrentSpeed);
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         startButton=findViewById(R.id.startButton);
         stopButton =findViewById( R.id.stopButton );
         imageRun=findViewById(R.id.imageRunning);
         infoText=findViewById(R.id.infoText);
         speedLimitText=findViewById(R.id.speedLimitText);
-
-        preferences = getPreferences(MODE_PRIVATE);
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        preferences = getSharedPreferences("MyPreferences",MODE_PRIVATE);
         limit=readLimit();
         speedLimitText.setText(String.format("Speed limit is %s km/h ",limit));
     }
     @Override
     protected void onResume() {
-
-        super.onResume();
         limit=readLimit();
         speedLimitText.setText(String.format("Speed limit is %s km/h ",limit));
-
+        super.onResume();
     }
-    public String readLimit(){
-        return preferences.getString("limit","30");
+
+    public int readLimit(){
+        return preferences.getInt("limit",30);
     }
     public void startTracking(View view) {
         //if permission for location is not granted
@@ -104,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     }
     public void changeLimit(View view){
-        Intent intent = new Intent(this, speedLimitActivity.class);
+        Intent intent = new Intent(this, SpeedLimitActivity.class);
         intent.putExtra("limit",limit);
         startActivity(intent);
     }
