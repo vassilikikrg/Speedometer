@@ -7,4 +7,6 @@
     <color name="dark_green">#254d32</color>
     <color name="indigo_purple">#5222d0</color>
     <color name="peach">#dc625d</color>
+    <color name="speedingColor">#FF0000</color>
+
 </resources>

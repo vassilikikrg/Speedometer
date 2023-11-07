@@ -2,11 +2,14 @@ package com.karag.speedometer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,6 +17,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     public void stopUIChanges(View view){
+        setActivityBackgroundColor(R.color.white);
         //replace stop button with start button
         stopButton.setVisibility(View.GONE);
         startButton.setVisibility(View.VISIBLE);
@@ -107,6 +112,20 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         // 1 m/s=3.6 km/h
         double speed=location.getSpeed()*3.6;
         currentSpeedText.setText(new StringBuilder().append("Current speed:\n").append(String.format("%.2f", speed)).append("\nkm/h"));
-
+        if(isSpeeding(speed,limit)){
+            setActivityBackgroundColor(R.color.speedingColor);
+        }
+        else{setActivityBackgroundColor(R.color.white);}
     }
+    public void setActivityBackgroundColor(int colorResourceId) {
+        int color = ContextCompat.getColor(this, colorResourceId);
+        ConstraintLayout layout = findViewById(R.id.constraintLayoutMain);
+        layout.setBackgroundColor(color);
+    }
+
+    public boolean isSpeeding(double currentSpeed,int speedLimit){
+        if(currentSpeed>speedLimit) return true;
+        return false;
+    }
+
 }
