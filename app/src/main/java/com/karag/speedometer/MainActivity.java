@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     ImageView imageRun;
     SharedPreferences preferences;
     int limit;
+    CustomTTS customTTS;
+    boolean isInformed=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         infoText=findViewById(R.id.infoText);
         speedLimitText=findViewById(R.id.speedLimitText);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        preferences = getSharedPreferences("MyPreferences",MODE_PRIVATE);
+        preferences = getSharedPreferences("MyPreferences",MODE_PRIVATE); //access shared preferences
         limit=readLimit();
         speedLimitText.setText(String.format("Speed limit is %s km/h ",limit));
+        customTTS=new CustomTTS(this);
     }
     @Override
     protected void onResume() {
@@ -114,8 +117,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         currentSpeedText.setText(new StringBuilder().append("Current speed:\n").append(String.format("%.2f", speed)).append("\nkm/h"));
         if(isSpeeding(speed,limit)){
             setActivityBackgroundColor(R.color.speedingColor);
+            if(!isInformed){
+            customTTS.speak("Speed limit exceeded");
+            isInformed=true;
+            }
         }
-        else{setActivityBackgroundColor(R.color.white);}
+        else{
+            setActivityBackgroundColor(R.color.white);
+            isInformed=false;
+        }
     }
     public void setActivityBackgroundColor(int colorResourceId) {
         int color = ContextCompat.getColor(this, colorResourceId);
