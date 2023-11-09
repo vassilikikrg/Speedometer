@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:layout_marginStart="30dp">
+
+
+            <TextView
+                android:id="@+id/log_longitude_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:fontFamily="@font/poppins"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/log_latitude_txt"
+                app:layout_constraintTop_toTopOf="@+id/log_latitude_txt" />
+
+            <TextView
+                android:id="@+id/log_time_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="10/12/2022"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/log_latitude_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:fontFamily="@font/poppins"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/pinIcon"
+                app:layout_constraintTop_toTopOf="@+id/pinIcon" />
+
+            <TextView
+                android:id="@+id/log_speed_txt"
+                android:layout_width="118dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="28dp"
+                android:fontFamily="@font/poppins"
+                android:text="30 km/h"
+                app:layout_constraintStart_toEndOf="@+id/speedIcon"
+                app:layout_constraintTop_toTopOf="@+id/speedIcon" />
+
+            <ImageView
+                android:id="@+id/pinIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/log_time_txt"
+                app:srcCompat="@drawable/pin_drop" />
+
+            <ImageView
+                android:id="@+id/speedIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pinIcon"
+                app:srcCompat="@drawable/speed_black" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

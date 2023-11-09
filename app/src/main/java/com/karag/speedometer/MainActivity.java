@@ -1,5 +1,7 @@
 package com.karag.speedometer;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,12 +16,17 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
@@ -30,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     int limit;
     CustomTTS customTTS;
     boolean isInformed=false;
+    DatabaseHelper dbHelper;
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         limit=readLimit();
         speedLimitText.setText(String.format("Speed limit is %s km/h ",limit));
         customTTS=new CustomTTS(this);
+        dbHelper=new DatabaseHelper(this);
     }
     @Override
     protected void onResume() {
@@ -117,9 +127,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         currentSpeedText.setText(new StringBuilder().append("Current speed:\n").append(String.format("%.2f", speed)).append("\nkm/h"));
         if(isSpeeding(speed,limit)){
             setActivityBackgroundColor(R.color.speedingColor);
-            if(!isInformed){
+            if(!isInformed){ //user is informed only the time when he exceeds the speed limit
             customTTS.speak("Speed limit exceeded");
             isInformed=true;
+            //registration of the speed limit violation incident
+            insertSpeedingLog(String.valueOf(location.getLatitude()),String.valueOf(location.getLongitude()),speed, String.valueOf(LocalDateTime.now()));
             }
         }
         else{
@@ -138,4 +150,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         return false;
     }
 
+    public void viewSpeedingLogs(View view){
+        Intent intent = new Intent(this, SpeedingLogsActivity.class);
+        startActivity(intent);
+    }
+    public void insertSpeedingLog(String  latitude, String longitude, double speed, String timestamp){
+        dbHelper.addLog(latitude,longitude,speed,timestamp);
+    }
 }

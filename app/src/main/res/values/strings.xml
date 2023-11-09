@@ -9,4 +9,6 @@
     <string name="info_message">Please click on the start button to initiate speed tracking</string>
     <string name="speed_limit">Speed limit:</string>
     <string name="set_limit_button">Update limit</string>
+    <string name="log_title">Speeding Logs</string>
+
 </resources>
