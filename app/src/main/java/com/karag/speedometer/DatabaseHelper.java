@@ -8,6 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     private Context context;
     private static final String DATABASE_NAME = "speedingDB.db";
@@ -65,6 +70,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(db != null){
             cursor = db.rawQuery(query, null);
         }
+        return cursor;
+    }
+
+    public Cursor readDataPast7days(){
+        // retrieve speeding logs for the past 7 days
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        if (db != null) {
+            //current LocalDateTime
+            LocalDateTime currentDateTime = LocalDateTime.now();
+
+            //calculate the LocalDateTime 7 days ago
+            LocalDateTime sevenDaysAgo = currentDateTime.minusDays(7);
+
+            //format the LocalDateTime to match the timestamp format in the database
+            String currentDateTimeString = new CustomDatetime(currentDateTime).DatetimeToString();
+            String sevenDaysAgoString = new CustomDatetime(sevenDaysAgo).DatetimeToString();
+
+            //build the query with a WHERE clause to filter logs within the past 7 days
+            String query = "SELECT * FROM " + TABLE_NAME +
+                    " WHERE " + COLUMN_TIME + " BETWEEN '" + sevenDaysAgoString + "' AND '" + currentDateTimeString + "'";
+
+            // Execute the query
+            cursor = db.rawQuery(query, null);
+        }
+
         return cursor;
     }
 }

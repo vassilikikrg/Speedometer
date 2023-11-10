@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     CustomTTS customTTS;
     boolean isInformed=false;
     DatabaseHelper dbHelper;
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
