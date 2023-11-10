@@ -24,6 +24,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
@@ -52,10 +54,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         imageRun=findViewById(R.id.imageRunning);
         infoText=findViewById(R.id.infoText);
         speedLimitText=findViewById(R.id.speedLimitText);
+
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         preferences = getSharedPreferences("MyPreferences",MODE_PRIVATE); //access shared preferences
         limit=readLimit();
         speedLimitText.setText(String.format("Speed limit is %s km/h ",limit));
+
         customTTS=new CustomTTS(this);
         dbHelper=new DatabaseHelper(this);
     }
@@ -158,6 +162,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     CustomDatetime customDatetime;
     public void insertSpeedingLog(double  latitude, double longitude, double speed){
         customDatetime=new CustomDatetime(LocalDateTime.now());
-        dbHelper.addLog(String.valueOf(latitude),String.valueOf(longitude),speed,customDatetime.DatetimeToString());
+        dbHelper.addLog(String.valueOf(latitude),String.valueOf(longitude),doubleToFloatRounded(speed),customDatetime.DatetimeToString());
+    }
+
+    public float doubleToFloatRounded(double doubleValue){
+        float floatValue=(float) doubleValue;
+        //round the float to two decimal points
+        int decimalPoints = 2;
+        BigDecimal roundedValue = new BigDecimal(floatValue).setScale(decimalPoints, RoundingMode.HALF_UP);
+        return roundedValue.floatValue();
     }
 }
