@@ -3,6 +3,7 @@ package com.karag.speedometer;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,11 +16,14 @@ public class SpeedingLogsActivity extends AppCompatActivity {
     DatabaseHelper dbHelper;
     ArrayList<String> log_id,log_latitude,log_longitude,log_speed,log_timestamp;
     CustomAdapter customAdapter;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speeding_logs);
         recyclerView=findViewById(R.id.recyclerView);
+        toolbar=findViewById(R.id.topappbar);
+        setSupportActionBar(toolbar);
 
         dbHelper=new DatabaseHelper(this);
         log_id=new ArrayList<>();

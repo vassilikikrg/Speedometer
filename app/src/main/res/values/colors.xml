@@ -8,5 +8,9 @@
     <color name="indigo_purple">#5222d0</color>
     <color name="peach">#dc625d</color>
     <color name="speedingColor">#ffb380</color>
+    <color name="purple">#9b3c82</color>
+    <color name="dark_purple">#5b2448</color>
+    <color name="turquoise">#21a0aa</color>
+    <color name="orange">#f94f46</color>
 
 </resources>

@@ -3,6 +3,7 @@ package com.karag.speedometer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     CustomTTS customTTS;
     boolean isInformed=false;
     DatabaseHelper dbHelper;
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         imageRun=findViewById(R.id.imageRunning);
         infoText=findViewById(R.id.infoText);
         speedLimitText=findViewById(R.id.speedLimitText);
+        toolbar=findViewById(R.id.topappbar);
+        setSupportActionBar(toolbar);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         preferences = getSharedPreferences("MyPreferences",MODE_PRIVATE); //access shared preferences

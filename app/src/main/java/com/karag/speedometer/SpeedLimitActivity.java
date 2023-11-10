@@ -1,6 +1,7 @@
 package com.karag.speedometer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ public class SpeedLimitActivity extends AppCompatActivity implements SeekBar.OnS
     SharedPreferences preferences;
     int currentLimit;
     int updatedLimit;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,8 @@ public class SpeedLimitActivity extends AppCompatActivity implements SeekBar.OnS
         updatedLimitText=findViewById(R.id.updatetdLimitText);
         currentLimitText=findViewById(R.id.currentLimitText);
         seekBar=findViewById(R.id.seekBarLimit);
+        toolbar=findViewById(R.id.topappbar);
+        setSupportActionBar(toolbar);
 
         currentLimit=getIntent().getIntExtra("limit",30);
         currentLimitText.setText("Current limit is set to "+currentLimit+" km/h");
