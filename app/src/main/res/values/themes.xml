@@ -17,6 +17,8 @@
     <style name="CardBackground"><item name="android:background">@color/white</item></style>
     <style name="TextColor"><item name="android:textColor">@color/dark_grey</item></style>
     <style name="ButtonColor"><item name="android:backgroundTint">@color/purple</item><item name="android:textColor">@color/black</item></style>
+    <style name="TrackingButtonColor"><item name="android:backgroundTint">@color/turquoise</item><item name="android:textColor">@color/black</item></style>
+
     <style name="PinIcon"><item name="android:src">@drawable/pin_black</item></style>
     <style name="SpeedIcon"><item name="android:src">@drawable/speed_black</item></style>
     <style name="TimeIcon"><item name="android:src">@drawable/time_black</item></style>

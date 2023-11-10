@@ -17,100 +17,104 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/ScreenBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="30dp"
             android:padding="12dp"
             android:paddingBottom="20dp">
 
 
             <TextView
                 android:id="@+id/log_time_txt"
+                style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:fontFamily="@font/poppins"
                 android:text="12:45"
                 android:textSize="16sp"
-                style="@style/TextColor"
                 app:layout_constraintStart_toEndOf="@+id/timeIcon"
                 app:layout_constraintTop_toTopOf="@+id/timeIcon" />
 
             <TextView
                 android:id="@+id/log_longitude_txt"
+                style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="TextView"
                 android:textSize="14sp"
-                style="@style/TextColor"
                 app:layout_constraintStart_toStartOf="@+id/log_latitude_txt"
                 app:layout_constraintTop_toBottomOf="@+id/log_latitude_txt" />
 
             <TextView
                 android:id="@+id/log_date_txt"
+                style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="10/12/2022"
                 android:textSize="18sp"
-                style="@style/TextColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/log_latitude_txt"
+                style="@style/TextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:fontFamily="@font/poppins"
                 android:text="TextView"
                 android:textSize="14sp"
-                style="@style/TextColor"
                 app:layout_constraintStart_toEndOf="@+id/pinIcon"
                 app:layout_constraintTop_toTopOf="@+id/pinIcon" />
 
             <TextView
                 android:id="@+id/log_speed_txt"
+                style="@style/TextColor"
                 android:layout_width="118dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="30 km/h"
                 android:textSize="16sp"
-                style="@style/TextColor"
                 app:layout_constraintStart_toEndOf="@+id/speedIcon"
                 app:layout_constraintTop_toTopOf="@+id/speedIcon" />
 
             <ImageView
                 android:id="@+id/pinIcon"
+                style="@style/PinIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/timeIcon"
-                style="@style/PinIcon"/>
+                app:layout_constraintTop_toBottomOf="@+id/timeIcon" />
 
             <ImageView
                 android:id="@+id/timeIcon"
+                style="@style/TimeIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/log_date_txt"
-                style="@style/TimeIcon"/>
+                app:layout_constraintTop_toBottomOf="@+id/log_date_txt" />
 
             <ImageView
                 android:id="@+id/speedIcon"
+                style="@style/SpeedIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.542"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/log_date_txt"
-                style="@style/SpeedIcon"/>
+                app:layout_constraintTop_toTopOf="@+id/log_date_txt" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

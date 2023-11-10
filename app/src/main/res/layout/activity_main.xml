@@ -57,7 +57,7 @@
             android:id="@+id/stopButton"
             android:layout_width="153dp"
             android:layout_height="71dp"
-            android:backgroundTint="@color/peach"
+            style="@style/TrackingButtonColor"
             android:fontFamily="@font/poppins"
             android:onClick="stopTracking"
             android:text="@string/button_stop"

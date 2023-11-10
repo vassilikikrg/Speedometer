@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public Cursor readAllData(){
         //retrieve speeding logs
-        String query = "SELECT * FROM " + TABLE_NAME;
+        String query = "SELECT * FROM " + TABLE_NAME+" ORDER BY "+COLUMN_ID+ " DESC"; //return most recent log first
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;

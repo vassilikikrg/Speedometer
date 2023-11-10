@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     public void stopUIChanges(View view){
-        setActivityBackgroundColor(R.color.white);
+        resetColorBasedOnUIMode();
         //replace stop button with start button
         stopButton.setVisibility(View.GONE);
         startButton.setVisibility(View.VISIBLE);
@@ -126,10 +126,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         double speed=location.getSpeed()*3.6;
         currentSpeedText.setText(new StringBuilder().append("Current speed:\n").append(String.format("%.2f", speed)).append("\nkm/h"));
         if(isSpeeding(speed,limit)){
-            setActivityBackgroundColor(R.color.speedingColor);
+            changeColorSpeeding();
             if(!isInformed){ //user is informed only the time when he exceeds the speed limit
-                //registration of the speed limit violation incident
-                insertSpeedingLog(location.getLatitude(),location.getLongitude(),speed);
+                insertSpeedingLog(location.getLatitude(),location.getLongitude(),speed);//registration of the speed limit violation incident
                 customTTS.speak("Speed limit exceeded");
                 isInformed=true;
             }
@@ -173,5 +172,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         if(isNightModeOn)
             setActivityBackgroundColor(R.color.dark_grey);
         else setActivityBackgroundColor(R.color.white);
+    }
+    public void changeColorSpeeding(){
+        int nightModeFlags =getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        boolean isNightModeOn = nightModeFlags == Configuration.UI_MODE_NIGHT_YES;//Check if the Dark Mode is On
+        if(isNightModeOn)
+            setActivityBackgroundColor(R.color.dark_orange);
+        else setActivityBackgroundColor(R.color.orange);
     }
 }
