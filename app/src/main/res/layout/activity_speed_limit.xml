@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/purple"
+    style="@style/ScreenBackground"
     tools:context=".SpeedLimitActivity">
 
     <include
@@ -19,6 +19,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/text_title"
         android:textSize="24sp"
+        style="@style/TextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topappbar" />
@@ -29,6 +30,7 @@
         android:layout_height="22dp"
         android:layout_marginTop="20dp"
         android:text=""
+        style="@style/TextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +56,7 @@
         android:backgroundTint="@color/purple"
         android:onClick="saveLimit"
         android:text="@string/set_limit_button"
+        style="@style/ButtonColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBarLimit" />

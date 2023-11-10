@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    style="@style/ScreenBackground"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="413dp"
         android:layout_height="166dp"
+        style="@style/CardBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,8 +32,9 @@
                 android:fontFamily="@font/poppins"
                 android:text="12:45"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/pinIcon2"
-                app:layout_constraintTop_toTopOf="@+id/pinIcon2" />
+                style="@style/TextColor"
+                app:layout_constraintStart_toEndOf="@+id/timeIcon"
+                app:layout_constraintTop_toTopOf="@+id/timeIcon" />
 
             <TextView
                 android:id="@+id/log_longitude_txt"
@@ -42,6 +44,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="TextView"
                 android:textSize="14sp"
+                style="@style/TextColor"
                 app:layout_constraintStart_toStartOf="@+id/log_latitude_txt"
                 app:layout_constraintTop_toBottomOf="@+id/log_latitude_txt" />
 
@@ -52,6 +55,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="10/12/2022"
                 android:textSize="18sp"
+                style="@style/TextColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,6 +67,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="TextView"
                 android:textSize="14sp"
+                style="@style/TextColor"
                 app:layout_constraintStart_toEndOf="@+id/pinIcon"
                 app:layout_constraintTop_toTopOf="@+id/pinIcon" />
 
@@ -74,6 +79,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:text="30 km/h"
                 android:textSize="16sp"
+                style="@style/TextColor"
                 app:layout_constraintStart_toEndOf="@+id/speedIcon"
                 app:layout_constraintTop_toTopOf="@+id/speedIcon" />
 
@@ -83,17 +89,17 @@
                 android:layout_height="25dp"
                 android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pinIcon2"
-                app:srcCompat="@drawable/pin_drop" />
+                app:layout_constraintTop_toBottomOf="@+id/timeIcon"
+                style="@style/PinIcon"/>
 
             <ImageView
-                android:id="@+id/pinIcon2"
+                android:id="@+id/timeIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/log_date_txt"
-                app:srcCompat="@drawable/time_black" />
+                style="@style/TimeIcon"/>
 
             <ImageView
                 android:id="@+id/speedIcon"
@@ -104,7 +110,7 @@
                 app:layout_constraintHorizontal_bias="0.542"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/log_date_txt"
-                app:srcCompat="@drawable/speed_black" />
+                style="@style/SpeedIcon"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

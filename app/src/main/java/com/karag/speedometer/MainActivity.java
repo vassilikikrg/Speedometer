@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         }
         else{
-            setActivityBackgroundColor(R.color.white);
+            resetColorBasedOnUIMode();
             isInformed=false;
         }
     }
@@ -165,5 +166,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         int decimalPoints = 2;
         BigDecimal roundedValue = new BigDecimal(floatValue).setScale(decimalPoints, RoundingMode.HALF_UP);
         return roundedValue.floatValue();
+    }
+    public void resetColorBasedOnUIMode(){
+        int nightModeFlags =getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        boolean isNightModeOn = nightModeFlags == Configuration.UI_MODE_NIGHT_YES;//Check if the Dark Mode is On
+        if(isNightModeOn)
+            setActivityBackgroundColor(R.color.dark_grey);
+        else setActivityBackgroundColor(R.color.white);
     }
 }

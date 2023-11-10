@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/ScreenBackground"
     tools:context=".SpeedingLogsActivity">
 
     <include
         android:id="@+id/topappbar"
         layout="@layout/topappbar"
-        android:layout_marginBottom="68dp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></include>
@@ -21,6 +21,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/log_title"
         android:textSize="34sp"
+        style="@style/TextColor"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="68dp"
+        style="@style/ScreenBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
