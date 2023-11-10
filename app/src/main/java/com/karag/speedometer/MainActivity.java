@@ -24,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             customTTS.speak("Speed limit exceeded");
             isInformed=true;
             //registration of the speed limit violation incident
-            insertSpeedingLog(String.valueOf(location.getLatitude()),String.valueOf(location.getLongitude()),speed, String.valueOf(LocalDateTime.now()));
+            insertSpeedingLog(location.getLatitude(),location.getLongitude(),speed);
             }
         }
         else{
@@ -154,7 +155,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         Intent intent = new Intent(this, SpeedingLogsActivity.class);
         startActivity(intent);
     }
-    public void insertSpeedingLog(String  latitude, String longitude, double speed, String timestamp){
-        dbHelper.addLog(latitude,longitude,speed,timestamp);
+    CustomDatetime customDatetime;
+    public void insertSpeedingLog(double  latitude, double longitude, double speed){
+        customDatetime=new CustomDatetime(LocalDateTime.now());
+        dbHelper.addLog(String.valueOf(latitude),String.valueOf(longitude),speed,customDatetime.DatetimeToString());
     }
 }
