@@ -1,18 +1,13 @@
 package com.karag.speedometer;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
@@ -46,7 +41,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.log_speed_txt.setText(log_speed.get(position)+" km/h");
         String formattedDatetime=String.valueOf(log_timestamp.get(position));
         customDatetime.StringToDatetime(formattedDatetime);
-        Log.i(TAG,customDatetime.getDate());
         holder.log_date_txt.setText(customDatetime.getDate());
         holder.log_time_txt.setText(customDatetime.getTime());
 

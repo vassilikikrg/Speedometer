@@ -1,33 +1,25 @@
 package com.karag.speedometer;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Timestamp;
-import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -133,10 +125,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         if(isSpeeding(speed,limit)){
             setActivityBackgroundColor(R.color.speedingColor);
             if(!isInformed){ //user is informed only the time when he exceeds the speed limit
-            customTTS.speak("Speed limit exceeded");
-            isInformed=true;
-            //registration of the speed limit violation incident
-            insertSpeedingLog(location.getLatitude(),location.getLongitude(),speed);
+                //registration of the speed limit violation incident
+                insertSpeedingLog(location.getLatitude(),location.getLongitude(),speed);
+                customTTS.speak("Speed limit exceeded");
+                isInformed=true;
             }
         }
         else{

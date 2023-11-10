@@ -9,8 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="407dp"
-        android:layout_height="137dp"
+        android:layout_width="413dp"
+        android:layout_height="166dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,12 +38,12 @@
                 android:id="@+id/log_longitude_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="TextView"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/log_latitude_txt"
-                app:layout_constraintTop_toTopOf="@+id/log_latitude_txt" />
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/log_latitude_txt"
+                app:layout_constraintTop_toBottomOf="@+id/log_latitude_txt" />
 
             <TextView
                 android:id="@+id/log_date_txt"
@@ -62,7 +62,7 @@
                 android:layout_marginStart="28dp"
                 android:fontFamily="@font/poppins"
                 android:text="TextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/pinIcon"
                 app:layout_constraintTop_toTopOf="@+id/pinIcon" />
 
@@ -70,7 +70,7 @@
                 android:id="@+id/log_speed_txt"
                 android:layout_width="118dp"
                 android:layout_height="24dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="15dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="30 km/h"
                 android:textSize="16sp"
@@ -99,7 +99,9 @@
                 android:id="@+id/speedIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.542"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/log_date_txt"
                 app:srcCompat="@drawable/speed_black" />

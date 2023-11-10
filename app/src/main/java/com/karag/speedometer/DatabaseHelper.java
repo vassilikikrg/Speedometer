@@ -1,7 +1,5 @@
 package com.karag.speedometer;
 
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
