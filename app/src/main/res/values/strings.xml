@@ -10,5 +10,7 @@
     <string name="speed_limit">Speed limit:</string>
     <string name="set_limit_button">Update limit</string>
     <string name="log_title">Speeding Logs</string>
+    <string name="all_logs_radio">All logs</string>
+    <string name="past_7_days_radio">Past 7 days</string>
 
 </resources>

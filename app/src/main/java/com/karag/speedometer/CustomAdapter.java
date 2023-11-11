@@ -11,6 +11,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
+    public void setLog_id(ArrayList log_id) {
+        this.log_id = log_id;
+    }
+
+    public void setLog_latitude(ArrayList log_latitude) {
+        this.log_latitude = log_latitude;
+    }
+
+    public void setLog_longitude(ArrayList log_longitude) {
+        this.log_longitude = log_longitude;
+    }
+
+    public void setLog_speed(ArrayList log_speed) {
+        this.log_speed = log_speed;
+    }
+
+    public void setLog_timestamp(ArrayList log_timestamp) {
+        this.log_timestamp = log_timestamp;
+    }
 
     private Context context;
     private ArrayList log_id,log_latitude,log_longitude,log_speed,log_timestamp;
@@ -45,7 +64,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.log_time_txt.setText(customDatetime.getTime());
 
     }
-
     @Override
     public int getItemCount() {
         return log_id.size();

@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/ScreenBackground"
     tools:context=".SpeedingLogsActivity">
 
     <include
@@ -16,26 +16,53 @@
 
     <TextView
         android:id="@+id/log_title"
+        style="@style/TextColor"
         android:layout_width="268dp"
         android:layout_height="47dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/log_title"
         android:textSize="34sp"
-        style="@style/TextColor"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topappbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="68dp"
         style="@style/ScreenBackground"
+        android:layout_width="412dp"
+        android:layout_height="436dp"
+        android:layout_marginTop="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topappbar" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/log_title">
+
+        <RadioButton
+            android:id="@+id/radioButtonAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/all_logs_radio"
+            android:onClick="checkRadioButton"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioButton7Days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/past_7_days_radio"
+            android:onClick="checkRadioButton"/>
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

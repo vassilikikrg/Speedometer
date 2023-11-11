@@ -91,7 +91,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             //build the query with a WHERE clause to filter logs within the past 7 days
             String query = "SELECT * FROM " + TABLE_NAME +
-                    " WHERE " + COLUMN_TIME + " BETWEEN '" + sevenDaysAgoString + "' AND '" + currentDateTimeString + "'";
+                    " WHERE " + COLUMN_TIME + " BETWEEN '" + sevenDaysAgoString + "' AND '" + currentDateTimeString + "' ORDER BY "+COLUMN_ID+ " DESC";;
+            System.out.println(query);
+            // Execute the query
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
+    }
+    public Cursor readLogsForLast10Minutes() {
+        // retrieve speeding logs for the last 10 minutes
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        if (db != null) {
+            // Get the current LocalDateTime
+            LocalDateTime currentDateTime = LocalDateTime.now();
+
+            // Calculate the LocalDateTime 10 minutes ago
+            LocalDateTime tenMinutesAgo = currentDateTime.minusMinutes(10);
+
+            //format the LocalDateTime to match the timestamp format in the database
+            String currentDateTimeString = new CustomDatetime(currentDateTime).DatetimeToString();
+            String tenMinutesAgoString = new CustomDatetime(tenMinutesAgo).DatetimeToString();
+            // Build the query with a WHERE clause to filter logs within the last 10 minutes
+            String query = "SELECT * FROM " + TABLE_NAME +
+                    " WHERE " + COLUMN_TIME + " BETWEEN '" + tenMinutesAgoString + "' AND '" + currentDateTimeString + "'";
 
             // Execute the query
             cursor = db.rawQuery(query, null);

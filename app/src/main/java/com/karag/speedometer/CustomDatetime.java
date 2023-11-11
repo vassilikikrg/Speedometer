@@ -14,7 +14,7 @@ public class CustomDatetime {
         this.localDateTime = localDateTime;
     }
 
-    public static final DateTimeFormatter formatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    public static final DateTimeFormatter formatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public CustomDatetime() {
     }
@@ -34,7 +34,7 @@ public class CustomDatetime {
         return localDateTime.getDayOfMonth()+"-"+localDateTime.getMonthValue()+"-"+localDateTime.getYear();
     }
     public String getTime(){
-        return localDateTime.getHour()+":"+localDateTime.getMinute();
+        return String.format("%02d:%02d", localDateTime.getHour(), localDateTime.getMinute());
     }
 
 }

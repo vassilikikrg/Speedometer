@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public void stopTracking(View view){
 
         locationManager.removeUpdates(this); // stop requesting user's location updates
+        isInformed=false;
         stopUIChanges(view);
     }
 
@@ -127,10 +128,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         currentSpeedText.setText(new StringBuilder().append("Current speed:\n").append(String.format("%.2f", speed)).append("\nkm/h"));
         if(isSpeeding(speed,limit)){
             changeColorSpeeding();
+            System.out.println("speeding");
             if(!isInformed){ //user is informed only the time when he exceeds the speed limit
+                System.out.println("not informed");
+                isInformed=true;
                 insertSpeedingLog(location.getLatitude(),location.getLongitude(),speed);//registration of the speed limit violation incident
                 customTTS.speak("Speed limit exceeded");
-                isInformed=true;
             }
         }
         else{
