@@ -9,34 +9,19 @@
 
     <include
         android:id="@+id/topappbar"
-        layout="@layout/topappbar"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></include>
+        layout="@layout/topappbar"></include>
 
     <TextView
         android:id="@+id/log_title"
         style="@style/TextColor"
-        android:layout_width="268dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="282dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="@string/log_title"
+        android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topappbar" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        style="@style/ScreenBackground"
-        android:layout_width="412dp"
-        android:layout_height="436dp"
-        android:layout_marginTop="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topappbar" />
 
@@ -44,6 +29,7 @@
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,16 +39,26 @@
             android:id="@+id/radioButtonAll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/all_logs_radio"
+            android:checked="true"
             android:onClick="checkRadioButton"
-            android:checked="true"/>
+            android:text="@string/all_logs_radio" />
 
         <RadioButton
             android:id="@+id/radioButton7Days"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/past_7_days_radio"
-            android:onClick="checkRadioButton"/>
+            android:onClick="checkRadioButton"
+            android:text="@string/past_7_days_radio" />
     </RadioGroup>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        style="@style/ScreenBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 </androidx.constraintlayout.widget.ConstraintLayout>

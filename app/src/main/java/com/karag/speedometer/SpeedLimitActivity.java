@@ -25,6 +25,7 @@ public class SpeedLimitActivity extends AppCompatActivity implements SeekBar.OnS
         seekBar=findViewById(R.id.seekBarLimit);
         toolbar=findViewById(R.id.topappbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //back button displayed in order to return to parent activity
 
         currentLimit=getIntent().getIntExtra("limit",30);
         currentLimitText.setText("Current limit is set to "+currentLimit+" km/h");

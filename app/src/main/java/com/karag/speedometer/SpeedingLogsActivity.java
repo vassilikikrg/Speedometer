@@ -2,6 +2,7 @@ package com.karag.speedometer;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -35,6 +37,7 @@ public class SpeedingLogsActivity extends AppCompatActivity {
         radioGroup=findViewById(R.id.radioGroup);
         toolbar=findViewById(R.id.topappbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //back button displayed in order to return to parent activity
 
         dbHelper=new DatabaseHelper(this);
         log_id=new ArrayList<>();
@@ -57,6 +60,7 @@ public class SpeedingLogsActivity extends AppCompatActivity {
         customAdapter_7days=new CustomAdapter(this,log_id_7days,log_latitude_7days,log_longitude_7days,log_speed_7days,log_timestamp_7days);
         setRecyclerAdapter(customAdapter_all,SpeedingLogsActivity.this); //initial state
     }
+
     void storeAllDataInArrays(){
         Cursor cursor=dbHelper.readAllData(); ///initialization
 
