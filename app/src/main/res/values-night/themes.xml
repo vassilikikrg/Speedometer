@@ -23,6 +23,7 @@
 
     <style name="PinIcon"><item name="android:src">@drawable/pin_white</item></style>
     <style name="SpeedIcon"><item name="android:src">@drawable/speed_white</item></style>
+    <style name="LimitTextIcon"><item name="android:drawableLeft">@drawable/speed_white</item></style>
     <style name="TimeIcon"><item name="android:src">@drawable/time_white</item></style>
 
 </resources>

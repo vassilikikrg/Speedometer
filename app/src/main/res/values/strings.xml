@@ -12,5 +12,6 @@
     <string name="log_title">Speeding Logs</string>
     <string name="all_logs_radio">All logs</string>
     <string name="past_7_days_radio">Past 7 days</string>
+    <string name="no_logs_info">Well done! \nNo exceeding of the speed limit \nhas been recorded</string>
 
 </resources>

@@ -1,8 +1,5 @@
 package com.karag.speedometer;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -28,6 +25,8 @@ public class SpeedingLogsActivity extends AppCompatActivity {
     Toolbar toolbar;
     RadioGroup radioGroup;
     RadioButton radioButton,radio_all,radio_7days;
+    ImageView imageView;
+    TextView textViewInfo;
     Cursor cursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,8 @@ public class SpeedingLogsActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyclerView);
         radioGroup=findViewById(R.id.radioGroup);
         toolbar=findViewById(R.id.topappbar);
+        imageView=findViewById(R.id.imageView);
+        textViewInfo=findViewById(R.id.textViewInfoNoLogs);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //back button displayed in order to return to parent activity
 
@@ -65,9 +66,10 @@ public class SpeedingLogsActivity extends AppCompatActivity {
         Cursor cursor=dbHelper.readAllData(); ///initialization
 
         if(cursor.getCount()==0){
-
+            noLogsUI();
         }
         else {
+            recordedLogsUI();
             while (cursor.moveToNext()){
                 log_id.add(cursor.getString(0));
                 log_latitude.add(cursor.getString(1));
@@ -83,9 +85,10 @@ public class SpeedingLogsActivity extends AppCompatActivity {
         Cursor cursor=dbHelper.readDataPast7days(); //initialization
 
         if(cursor.getCount()==0){
-
+            noLogsUI();
         }
         else {
+            recordedLogsUI();
             while (cursor.moveToNext()){
                 log_id_7days.add(cursor.getString(0));
                 log_latitude_7days.add(cursor.getString(1));
@@ -110,6 +113,17 @@ public class SpeedingLogsActivity extends AppCompatActivity {
     public void setRecyclerAdapter(CustomAdapter customAdapter,Context context){
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+    }
+
+    public void noLogsUI(){
+        textViewInfo.setVisibility(View.VISIBLE);
+        imageView.setVisibility(View.VISIBLE);
+        radioGroup.setVisibility(View.GONE);
+    }
+    public void recordedLogsUI(){
+        textViewInfo.setVisibility(View.GONE);
+        imageView.setVisibility(View.GONE);
+        radioGroup.setVisibility(View.VISIBLE);
     }
 
 }
